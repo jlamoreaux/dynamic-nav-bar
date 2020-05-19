@@ -1,21 +1,21 @@
 /**
- * 
+ *
  * Manipulating the DOM exercise.
  * Exercise programmatically builds navigation,
  * scrolls to anchors from navigation,
  * and highlights section in viewport upon scrolling.
- * 
+ *
  * Dependencies: None
- * 
+ *
  * JS Version: ES2015/ES6
- * 
+ *
  * JS Standard: ESlint
- * 
+ *
 */
 
 /**
  * Define Global Variables
- * 
+ *
 */
 
 let nav;
@@ -28,8 +28,10 @@ let scrolling = false;
 /**
  * End Global Variables
  * Start Helper Functions
- * 
+ *
 */
+
+// Checks to see if we are scrolling on an interval
 setInterval(() => {
     if (scrolling) {
         scrolling = false;
@@ -39,7 +41,8 @@ setInterval(() => {
 
 
 /**
- * @description returns an array elements containing the page sections
+ * @description gathers elements containing the page sections
+ * @returns {Array} the gathered elements
  */
 const getSections = () => {
     return [...document.querySelectorAll('[id^="section"]')];
@@ -59,7 +62,7 @@ const navListeners = (nav) => {
 
 /**
  * @description Checks to see if the a section is visible on the screen. If it is, it will be set to active.
- * @param {Object[]} elements - sections on the page to be included in navigation
+ * @param {Array} elements - sections on the page to be included in navigation
  */
 const watchSections = (elements) => {
     elements.forEach((element) => {
@@ -92,7 +95,7 @@ const showMenu = () => {
 /**
  * End Helper Functions
  * Begin Main Functions
- * 
+ *
 */
 
 // build the nav
@@ -150,7 +153,7 @@ const scrollToElement = (sectionId) => {
 /**
  * End Main Functions
  * Begin Events
- * 
+ *
 */
 document.addEventListener('DOMContentLoaded', () => {
     pageSections = getSections();
@@ -169,5 +172,4 @@ document.addEventListener('DOMContentLoaded', () => {
         showMenu(menu)
         scrolling = true;
     });
-
 });
